@@ -1,18 +1,4 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-/**
- * @title Bondify Smart Assets
- * @dev Smart contract for tokenizing and managing bonds as digital assets
- */
-contract BondifySmartAssets {
-    
-    struct Bond {
-        uint256 bondId;
-        address issuer;
-        string bondName;
-        uint256 faceValue;
-        uint256 couponRate; // In basis points (e.g., 500 = 5%)
+In basis points (e.g., 500 = 5%)
         uint256 maturityDate;
         uint256 issueDate;
         uint256 totalSupply;
@@ -26,13 +12,7 @@ contract BondifySmartAssets {
         uint256 lastCouponClaim;
     }
     
-    // State variables
-    uint256 private bondCounter;
-    mapping(uint256 => Bond) public bonds;
-    mapping(uint256 => mapping(address => BondHolder)) public bondHoldings;
-    mapping(address => uint256[]) private userBonds;
-    
-    // Events
+    Events
     event BondIssued(uint256 indexed bondId, address indexed issuer, string bondName, uint256 faceValue);
     event BondPurchased(uint256 indexed bondId, address indexed buyer, uint256 quantity);
     event CouponClaimed(uint256 indexed bondId, address indexed holder, uint256 amount);
@@ -254,3 +234,6 @@ contract BondifySmartAssets {
      */
     receive() external payable {}
 }
+// 
+End
+// 
